@@ -1,11 +1,8 @@
 source 'https://rubygems.org'
-
+ruby "2.1.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
-
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -50,3 +47,14 @@ gem 'bootstrap-sass', '~> 3.1.1'
 # gem 'paperclip', "~> 4.1"
 gem 'paperclip', github: 'thoughtbot/paperclip'
 # => Using paperclip 4.1.1 from git://github.com/thoughtbot/paperclip.git (at master)
+
+# Use PostgreSQL as the database for Active Record in the production
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
+
+# Use sqlite3 as the database for Active Record in the development and test environments
+group :development, :test do
+	gem 'sqlite3'
+end
