@@ -48,6 +48,12 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 # => Using paperclip 4.1.1 from git://github.com/thoughtbot/paperclip.git (at master)
 
+# Extend paperclip with Dropbox storage
+gem "paperclip-dropbox", ">= 1.1.7"
+
+# Protect our account date using Figaro
+gem "figaro"
+
 # Use PostgreSQL as the database for Active Record in the production
 group :production do
 	gem 'pg'
