@@ -11,15 +11,17 @@
 <%= render 'layouts/header' %>
 
 <div class="container">
-  <% flash.each do |name, msg| %>
+  <% flash.each do |key, msg| %>
     <% if msg.is_a?(String) %>
-        <%= "'" + msg + "'" %><br />
-        <%= "'" + name + "'" %><br />
-        <%= "'" + flash[name] + "'" %><br />
-        <%= name == :notice %><br />    
-      <div class="alert alert-<%= (name == "notice" ? "success" : "danger") %> alert-dismissable">
+        <% if ENV['RAILS_ENV'].to_s == 'development' || ENV['RAILS_ENV'].to_s == '' %>
+          <%= "'" + msg + "'" %><br />
+          <%= "'" + key + "'" %><br />
+          <%= "'" + flash[key] + "'" %><br />
+          <%= key == :notice %><br />    
+        <% end %>
+      <div class="alert alert-<%= (key == 'notice' ? "success" : "danger") %> alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <%= content_tag :div, msg, :id => "flash_#{key}" %>
       </div>
     <% end %>
   <% end %>
