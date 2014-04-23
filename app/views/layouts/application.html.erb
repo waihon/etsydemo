@@ -17,7 +17,9 @@
         <%= "msg: '" + msg + "'" %><br />
         <%= "name: '" + name + "'" %><br />
         <%= "flash[name]: '" + flash[name] + "'" %><br />
-        <%= "name == :notice:" + name == :notice %><br />    
+        <%= "flash[:notice]: '" + flash[:notice] + "'" %><br />
+        <%= "name == :notice: " + (name== :notice).to_s %><br />
+        <%= "name.to_s == 'notice': " + (name.to_s == 'notice').to_s %><br />
         <%= debug flash %><br />
       <% end %>
       <div class="alert alert-<%= (name.to_s == 'notice' ? 'success' : 'danger') %> alert-dismissable">
