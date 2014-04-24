@@ -17,7 +17,7 @@
         <%= "msg: '" + msg + "'" %><br />
         <%= "name: '" + name + "'" %><br />
         <%= "flash[name]: '" + flash[name] + "'" %><br />
-        <%= "flash[:notice]: '" + flash[:notice] + "'" %><br />
+        <%= "flash[:notice].to_s: '" + flash[:notice].to_s + "'" %><br />
         <%= "name == :notice: " + (name== :notice).to_s %><br />
         <%= "name.to_s == 'notice': " + (name.to_s == 'notice').to_s %><br />
         <%= debug flash %><br />
