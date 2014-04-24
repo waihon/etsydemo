@@ -11,4 +11,13 @@ class Listing < ActiveRecord::Base
 
 	# To resolve Paperclip::Errors::MissingRequiredValidatorError 
 	validates_attachment_content_type :image, :content_type => %w(image/jpeg image/jpg image/png)
+
+	# Add validations to check the data submitted in the New Listing form
+	validates :name, :description, :price, presence: true
+	validates :price, numericality: { greater_than: 0 }
+
+	# https://github.com/thoughtbot/paperclip
+	# Use Devise helper to validate the Listing image
+	#validates_attachment_presence :image
+	validates :image, :attachment_presence => true
 end
