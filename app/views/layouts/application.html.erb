@@ -13,7 +13,7 @@
 <div class="container">
   <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
-      <% if Rails.env == 'development' || Rails.env == '' %>
+      <% if Rails.env.test? %>
         <%= "msg: '" + msg + "'" %><br />
         <%= "name: '" + name + "'" %><br />
         <%= "flash[name]: '" + flash[name] + "'" %><br />
