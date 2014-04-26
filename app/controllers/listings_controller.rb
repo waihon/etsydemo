@@ -84,7 +84,7 @@ class ListingsController < ApplicationController
 
     # Allow only specific Listing owners to access certain pages
     def check_user
-      if current_user != @listing.user_id
+      if current_user != @listing.user
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else."
       end
     end
