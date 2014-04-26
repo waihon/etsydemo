@@ -25,6 +25,9 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
+    # Set the user_id column when a new Listing is created. 
+    # Devise provides a convenient variable called current_user
+    @listing.user_id = current_user.id
 
     respond_to do |format|
       if @listing.save

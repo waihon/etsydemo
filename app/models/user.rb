@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
     # Add a validation to ensure that users cannot sign up with a blank name
     validates :name, presence: true
+
+    # New database relationship
+    has_many :listings, dependent: :destroy
 end

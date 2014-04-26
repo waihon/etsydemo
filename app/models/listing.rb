@@ -20,4 +20,7 @@ class Listing < ActiveRecord::Base
 	# Use Devise helper to validate the Listing image
 	#validates_attachment_presence :image
 	validates :image, :attachment_presence => true
+
+	# New database relationship
+	belongs_to :user
 end
