@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   get 'pages/contact'
 
+  # Add a new URL for our Seller page
+  get 'seller' => 'listings#seller'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
