@@ -7,5 +7,5 @@ class Order < ActiveRecord::Base
 
 	# Link the Order database to the User database
 	belongs_to :buyer, class_name: "User"
-	belongs_to :seller, class_name "User"
+	belongs_to :seller, class_name: "User"
 end
