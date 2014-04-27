@@ -3,25 +3,24 @@ class OrdersController < ApplicationController
   # Check that the user is signed in
   before_action :authenticate_user!
 
-  # GET /orders
-  # GET /orders.json
-  def index
-    @orders = Order.all
+  # Add 2 new actions to the Orders controller that correspond to the 2 new URLs defined in routes.rb
+  def sales
+    @orders = Order.all.where(seller: current_user).order("created_at DESC")
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
-  def show
+  def purchases
+    @orders = Order.all.where(buyer: current_user).order("created_at DESC")
   end
+ 
+  # Prevent Users from modifying their existing Orders by deleting the index, show, edit,
+  # update, and destroy actions.
+  # We'll also delete the corresponding view pages:
+  # edit.html.erb, index.html.erb, index.json.jbuilder, show.html.erb, show.json.jbuilder
 
   # GET /orders/new
   def new
     @order = Order.new
     @listing = Listing.find(params[:listing_id])
-  end
-
-  # GET /orders/1/edit
-  def edit
   end
 
   # POST /orders
@@ -46,30 +45,6 @@ class OrdersController < ApplicationController
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
-  def update
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /orders/1
-  # DELETE /orders/1.json
-  def destroy
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url }
-      format.json { head :no_content }
     end
   end
 

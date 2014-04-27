@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   # Create a unique URL for each Listing for which an Order is placed
+  # Remove the URLs associated with index, show, edit, update, and destroy actions
   #resources :listings
   resources :listings do
-    resources :orders
+    resources :orders, only: [:new, :create]
   end
 
   get 'pages/about'
@@ -16,6 +17,10 @@ Rails.application.routes.draw do
   # Add a new URL for our Seller page
   get 'seller' => 'listings#seller'
 
+  # Create 2 new URLs for a Sales history page and a Purchases history page
+  get 'sales' => 'orders#sales'
+  get 'purchases' => 'orders#purchases'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
