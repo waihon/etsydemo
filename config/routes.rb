@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  # Create a unique URL for each Listing for which an Order is placed
+  #resources :orders
+
   devise_for :users
-  resources :listings
+  # Create a unique URL for each Listing for which an Order is placed
+  #resources :listings
+  resources :listings do
+    resources :orders
+  end
 
   get 'pages/about'
 

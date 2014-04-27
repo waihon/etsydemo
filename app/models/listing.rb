@@ -23,4 +23,7 @@ class Listing < ActiveRecord::Base
 
 	# New database relationship
 	belongs_to :user
+
+	# Link the Order database to the Listing database
+	has_many :orders
 end

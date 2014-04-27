@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
 
     # New database relationship
     has_many :listings, dependent: :destroy
+
+    # Link the Order database to the User database
+	has_many :sales, class_name: "Order", foreign_key: "seller_id"
+	has_many :purchases, class_name: "Order", foreign_key: "buyer_id"    
 end
