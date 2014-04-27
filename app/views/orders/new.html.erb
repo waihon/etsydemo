@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
-<!-- Since we've re-routed or New Order URL, we need to update our link from orders_path to this new URL. -->
-<%= link_to 'Back', listing_orders_path %>
+<!-- Since we've re-routed our New Order URL, we need to update our link 
+from orders_path to this new URL (listing_orders_path not working). -->
+<%= link_to 'Back', @listing %>
