@@ -1,3 +1,5 @@
+# Include Stripe source in addition to the source for safety purpose
+source 'https://code.stripe.com'
 source 'https://rubygems.org'
 ruby "2.1.1"
 
@@ -59,6 +61,9 @@ gem 'paperclip-dropbox', '>= 1.1.7'
 gem 'figaro'
 
 gem 'devise'
+
+# Stripe gem for accepting credit card
+gem 'stripe'
 
 # Use PostgreSQL as the database for Active Record in the production.
 group :production do
