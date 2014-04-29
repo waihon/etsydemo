@@ -24,6 +24,14 @@
         </div>
       <% end %>
 
+      <!-- Deal with the case where the credit card information is invalid. -->
+      <!-- In this case, we want to show an error message, so we'll first add a section -->
+      <!-- for this message in our New Form page. CoffeeScript code will display the -->
+      <!-- error message. -->
+      <div id="stripe_error" class="alert alert-danger" style="display:none">
+        <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+      </div>
+
       <!-- Format our Order form to use Bootstrap forms -->
       <div class="form-group">
         <%= f.label :address %><br>
