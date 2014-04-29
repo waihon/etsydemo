@@ -14,6 +14,7 @@ payment =
       # When the credit card info is valid, add the Stripe token as a hidden field.
       #alert(response.id)
       $('#new_order').append($('<input type="hidden" name="stripeToken" />').val(response.id))
+      $('#new_order')[0].submit()
     else
       # Display the Stripe error message in the '<div id="stripe_error"...' section of _form.html.erb in orders.
       $('#stripe_error').text(response.error.message).show()

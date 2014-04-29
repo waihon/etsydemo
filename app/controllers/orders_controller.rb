@@ -42,13 +42,14 @@ class OrdersController < ApplicationController
     token = params[:stripeToken]
 
     begin
+      # Convert dollars to cents and round down to integer
       charge = Stripe::Charge.create(
-        # Convert dollars to cents and round down to integer
-        :amount => (@listing.price * 100).floor
-        :currency => "usd"
+        :amount => (@listing.price * 100).floor,
+        :currency => "usd", 
         :card => token
         )
-      flash[:notice] = "Thanks for ordering!"
+      # Don't display the thank-you message yet as there might be other non-card-related errors
+      #flash[:notice] = "Thanks for ordering!"
     rescue Stripe::CardError => e
       flash[:danger] = e.message
     end
@@ -56,9 +57,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         # Redirect to root url instead of order page 
-        #format.html { redirect_to root_url, notice: 'Order was successfully created.' }
-        # Flash message was taken care above based on whether it's successful or otherwise. 
-        format.html { redirect_to root_url }
+        format.html { redirect_to root_url, notice: 'Thanks for ordering!' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
