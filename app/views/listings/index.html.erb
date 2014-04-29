@@ -27,5 +27,6 @@
 <br>
 
 <% if user_signed_in? %>
-  <%= link_to 'New Listing', new_listing_path, class: "btn btn-link" %>
+  <!-- Disable turbolinks for links that go to the New Listing page -->
+  <%= link_to 'New Listing', new_listing_path, class: "btn btn-link", data: {no_turbolink: true } %>
 <% end %>
