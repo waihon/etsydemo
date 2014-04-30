@@ -36,6 +36,21 @@ class ListingsController < ApplicationController
     # Devise provides a convenient variable called current_user
     @listing.user_id = current_user.id
 
+    # Fill in the recipient field only if it's currently blank 
+    if current_user.recipient.blank?
+      Stripe.api_key = ENV["STRIPE_API_KEY"]
+      token = params[:stripeToken]
+
+      recipient = Stripe::Recipient.create(
+        :name => current_user.name,
+        :type => "individual",
+        :bank_account => token
+        )
+
+      current_user.recipient = recipient.id
+      current_user.save
+    end
+
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }

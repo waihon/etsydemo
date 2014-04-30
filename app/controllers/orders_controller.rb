@@ -54,6 +54,14 @@ class OrdersController < ApplicationController
       flash[:danger] = e.message
     end
 
+    # Transfer funds to the seller's bank account when an Order is placed.
+    # Charge 5% fee and transfer 95% to the seller. Price is in cents.
+    transfer = Stripe::Transfer.create(
+      :amount => (@listing.price * 95).floor,
+      :currency => "usd",
+      :recipient => @seller.recipient
+      )
+
     respond_to do |format|
       if @order.save
         # Redirect to root url instead of order page 

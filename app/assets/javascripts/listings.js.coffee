@@ -8,6 +8,8 @@ jQuery ->
 listing =
   setupForm: ->
     $('#new_listing').submit ->
+      # Validate bank account oly if it sees that extra form fields are present.
+      if $('input').length > 6
         $('input[type=submit]').attr('disabled', true)
         Stripe.bankAccount.createToken($('#new_listing'), listing.handleStripeResponse)
         false
