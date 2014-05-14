@@ -2,9 +2,9 @@
 
 Learning Ruby on Rails with project-based vidoes from BaseRails.
 
-By following the videos tutorial, I've built a demo online marketplace inspired by Etsy and deployed the app to Heroku (http://etsyd.herokuapp.com).
+By following the videos tutorial, I've built a demo online marketplace and deployed the app to Heroku (http://etsyd.herokuapp.com).
 
-Thease are the main topics covered in the video tutoria:
+These are the main topics covered in the video tutorial:
 
 * Creating a new website
 * Adding front-end design with Bootstrap
