@@ -1,28 +1,18 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Learning Ruby on Rails with project-based vidoes from the BaseRails.
 
-Things you may want to cover:
+By following the videos tutorial, I've built a demo online marketplace inspired by Etsy and deployed the app to Heroku that can be accessed via http://etsyd.herokuapp.com.
 
-* Ruby version
+Thease are the main topics covered in the video tutoria:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Creating a new website
+* Adding front-end design with Bootstrap
+* Updating listings with images
+* Saving progress to GitHub
+* Hosting images online with Dropbox
+* Adding users using Devise gem
+* Connecting users to listings
+* Placing orders
+* Accepting payments with Stripe
+* Transferring payments
