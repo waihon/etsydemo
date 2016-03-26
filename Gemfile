@@ -1,10 +1,12 @@
 # Include Stripe source in addition to the source for safety purpose
 source 'https://code.stripe.com'
 source 'https://rubygems.org'
-ruby "2.1.1"
+# Heroku no longer support 2.1.1
+# https://devcenter.heroku.com/articles/ruby-support#supported-runtimes
+ruby "2.1.8"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.14'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
