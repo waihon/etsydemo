@@ -1,5 +1,3 @@
-# Include Stripe source in addition to the source for safety purpose
-source 'https://code.stripe.com'
 source 'https://rubygems.org'
 # Heroku no longer support 2.1.1
 # https://devcenter.heroku.com/articles/ruby-support#supported-runtimes
@@ -60,12 +58,17 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'paperclip-dropbox', '>= 1.1.7'
 
 # Protect our account date using Figaro.
-gem 'figaro'
+gem 'figaro', '>= 1.0'
 
 gem 'devise'
 
+# Using `source` more than once without a block is a security risk, 
+# and may result in installing unexpected gems. To resolve this warning, 
+# use a block to indicate which gems should come from the secondary source.
 # Stripe gem for accepting credit card
-gem 'stripe'
+source 'https://code.stripe.com' do
+  gem 'stripe'
+end
 
 # Use PostgreSQL as the database for Active Record in the production.
 group :production do
